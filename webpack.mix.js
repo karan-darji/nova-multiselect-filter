@@ -1,13 +1,16 @@
-let mix = require('laravel-mix')
-const path = require('path')
-require('./nova.mix')
+let path = require('path');
+let mix = require('laravel-mix');
+let postcss = require('postcss-import');
+let tailwindcss = require('tailwindcss');
+
+mix.extend('nova', new require('laravel-nova-devtool'));
 
 mix
   .setPublicPath('dist')
   .js('resources/js/entry.js', 'js')
   .vue({ version: 3 })
-  .css('resources/css/entry.css', 'css')
   .nova('outl1ne/nova-multiselect-filter')
+  .postCss('resources/css/entry.css', 'dist/css/', [postcss(), tailwindcss('tailwind.config.js')])
   .alias({
     '@': 'vendor/laravel/nova/resources/js/',
   })

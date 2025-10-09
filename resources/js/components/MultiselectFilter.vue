@@ -6,9 +6,9 @@
 
     <div class="p-2">
       <multiselect
+        @remove="handleRemove"
         @input="handleChange"
         @close="handleClose"
-        @remove="handleRemove"
         @open="handleOpen"
         track-by="value"
         label="label"
@@ -99,6 +99,8 @@ export default {
       this.selectedOptions = this.isMultiselect ? value : [value];
 
       this.$nextTick(this.repositionDropdown);
+
+      this.emitChanges();
     },
 
     handleClose() {
@@ -109,13 +111,6 @@ export default {
     handleOpen() {
       this.isDropdownOpen = true;
       this.$nextTick(this.repositionDropdown);
-    },
-
-    handleRemove() {
-      // Resolve issue where handleRemove is called before handleChange
-      this.$nextTick(() => {
-        if (!this.isDropdownOpen) this.emitChanges();
-      });
     },
 
     emitChanges() {
