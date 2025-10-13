@@ -20,7 +20,7 @@ abstract class MultiselectFilter extends Filter
      * @param $value
      * @return Builder
      */
-    public function apply(NovaRequest $request, Builder $query, mixed $value): Builder
+    public function apply(NovaRequest $request, $query, $value): Builder
     {
         return $query;
     }
