@@ -3,10 +3,10 @@
 namespace Outl1ne\NovaMultiselectFilter;
 
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 abstract class MultiselectFilter extends Filter
 {
